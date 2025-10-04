@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support & Help - Meal Prep - AI Meal Planner</title>
+    <link rel="icon" type="image/png" href="assets/images/icon.png">
+    <link rel="shortcut icon" type="image/png" href="assets/images/icon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: #FF6B35;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 40px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #F7931E;
+        }
+
+        .back-link::before {
+            content: "←";
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .support-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .support-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .support-card .emoji {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .support-card h3 {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .support-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .support-button {
+            background: #FF6B35;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s ease;
+            font-weight: 500;
+        }
+
+        .support-button:hover {
+            background: #F7931E;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background: #f8f9fa;
+            padding: 20px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-weight: 600;
+            color: #2c3e50;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover {
+            background: #e9ecef;
+        }
+
+        .faq-question::after {
+            content: "+";
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-answer.active {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        .faq-answer p {
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 60px 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .contact-section h2 {
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .contact-item p {
+            color: white;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .contact-item a {
+            color: #4ade80;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        .troubleshooting {
+            background: #f8f9fa;
+            padding: 50px 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+
+        .troubleshooting h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+
+        .troubleshooting-steps {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+
+        .troubleshooting-steps li {
+            counter-increment: step-counter;
+            margin-bottom: 15px;
+            padding-left: 40px;
+            position: relative;
+            color: #555;
+        }
+
+        .troubleshooting-steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #FF6B35;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .response-time {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #2196f3;
+            margin: 30px 0;
+        }
+
+        .response-time h4 {
+            color: #1976d2;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 40px 15px;
+            }
+            
+            .support-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Support & Help</h1>
+        <p>We're here to help you master your meal planning and cooking</p>
+    </div>
+
+    <div class="container">
+        <a href="index.html" class="back-link">Back to Home</a>
+
+        <!-- Quick Support Options -->
+        <div class="support-grid">
+            <div class="support-card">
+                <div class="emoji">💬</div>
+                <h3>Email Support</h3>
+                <p>Get personalized help with your meal planning questions</p>
+                <a href="mailto:ddutchie@gmail.com?subject=Meal Prep Support" class="support-button">Email Us</a>
+            </div>
+            <div class="support-card">
+                <div class="emoji">❓</div>
+                <h3>FAQ</h3>
+                <p>Find quick answers to common questions</p>
+                <a href="#faq" class="support-button">View FAQ</a>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <section class="section" id="faq">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    How does the AI meal planner work?
+                </div>
+                <div class="faq-answer">
+                    <p>Our AI analyzes your meal preferences (dietary restrictions, cooking skill level, available ingredients, flavor preferences) and creates personalized meal plans and recipes. Simply enter your preferences, and our AI will generate comprehensive recommendations including recipes, cooking instructions, and shopping lists.</p>
+                    <p>The AI considers factors like your dietary needs, cooking time available, pantry ingredients, and nutritional goals to create the perfect meal plan for you.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Is my personal information safe and private?
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely! We prioritize your privacy. We don't collect, store, or process any personal data. Only anonymous meal preferences are sent to AI services for recipe generation.</p>
+                    <p>No user accounts are required, and all your meal plan and recipe data stays locally on your device. You can read our full <a href="privacy.html" style="color: #FF6B35;">Privacy Policy</a> for complete details.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    How many recipes can I save for free?
+                </div>
+                <div class="faq-answer">
+                    <p>You can save up to 5 recipes completely free. This gives you a good experience of our recipe management capabilities.</p>
+                    <p>After reaching the free limit, you can upgrade to Premium for unlimited recipe saves, AI chef assistant, meal plan analysis, smart pantry tracking, and more advanced features.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    What's included in Premium?
+                </div>
+                <div class="faq-answer">
+                    <p>Premium includes:</p>
+                    <p>• Unlimited recipe saves</p>
+                    <p>• AI Chef Assistant for personalized cooking advice</p>
+                    <p>• Weekly meal planner with auto-generated shopping lists</p>
+                    <p>• Meal plan analysis with mise en place tips</p>
+                    <p>• Smart pantry tracking with barcode scanner</p>
+                    <p>• Recipe import from any website</p>
+                    <p>• Priority customer support</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Can I modify or customize recipes?
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! You can scale recipes to different serving sizes, add personal notes, substitute ingredients, and customize cooking times. All saved recipes can be edited to match your preferences.</p>
+                    <p>Premium users can use the AI Chef Assistant to get suggestions for ingredient substitutions and recipe modifications.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    How accurate is the nutritional information?
+                </div>
+                <div class="faq-answer">
+                    <p>Our nutritional information is calculated based on standard ingredient databases and provides estimates for calories, macros (protein, carbs, fats), and key vitamins. The data is meant to be a helpful guide for your dietary planning.</p>
+                    <p>Actual nutrition may vary based on specific brands, ingredient quality, and cooking methods. For precise dietary needs, we recommend consulting with a nutritionist or dietitian.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    What types of cuisines and diets are supported?
+                </div>
+                <div class="faq-answer">
+                    <p>Our AI supports all major cuisines from around the world and can accommodate various dietary needs including vegetarian, vegan, gluten-free, dairy-free, keto, paleo, and more.</p>
+                    <p>You can specify your dietary restrictions, allergies, and preferences, and the AI will generate recipes that meet your requirements while ensuring delicious and nutritious meals.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    How do I cancel my Premium subscription?
+                </div>
+                <div class="faq-answer">
+                    <p>You can cancel your Premium subscription at any time through your device's app store settings:</p>
+                    <p>• iOS: Settings > [Your Name] > Subscriptions > Meal Prep > Cancel</p>
+                    <p>• Android: Play Store > Menu > Subscriptions > Meal Prep > Cancel</p>
+                    <p>You'll continue to have Premium access until the end of your current billing period.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Troubleshooting Section -->
+        <section class="section">
+            <h2>Troubleshooting</h2>
+            
+            <div class="troubleshooting">
+                <h3>App Not Generating Recipes or Meal Plans</h3>
+                <ol class="troubleshooting-steps">
+                    <li>Check your internet connection</li>
+                    <li>Ensure you've provided all required information (ingredients, preferences, dietary needs)</li>
+                    <li>Try restarting the app</li>
+                    <li>Check if you've reached your free saved recipe limit (upgrade to Premium for unlimited)</li>
+                    <li>Contact support if the issue persists</li>
+                </ol>
+            </div>
+
+            <div class="troubleshooting">
+                <h3>Premium Subscription Issues</h3>
+                <ol class="troubleshooting-steps">
+                    <li>Verify your subscription is active in your device's app store settings</li>
+                    <li>Restart the app to refresh subscription status</li>
+                    <li>Sign out and back into your App Store/Play Store account</li>
+                    <li>Contact your app store's support if billing issues persist</li>
+                    <li>Email us with your subscription details for additional help</li>
+                </ol>
+            </div>
+
+            <div class="troubleshooting">
+                <h3>App Performance Issues</h3>
+                <ol class="troubleshooting-steps">
+                    <li>Close and restart the app</li>
+                    <li>Restart your device</li>
+                    <li>Ensure you have the latest app version from the App Store</li>
+                    <li>Free up device storage space if needed</li>
+                    <li>Contact support with your device model and iOS/Android version</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <div class="contact-section">
+            <h2>Still Need Help?</h2>
+            <p>Our support team is here to help you master your meal planning and cooking via email. We typically respond within 24 hours.</p>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <h3>📧 Email Support</h3>
+                    <p>For detailed questions and technical support</p>
+                    <p><a href="mailto:ddutchie@gmail.com">ddutchie@gmail.com</a></p>
+                    <p>Include "Support Request" in the subject line</p>
+                </div>
+                <div class="contact-item">
+                    <h3>📍 Mailing Address</h3>
+                    <p>For formal correspondence</p>
+                    <p>705 King Street West<br>Toronto, ON M5V 2W8<br>Canada</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Response Time Information -->
+        <div class="response-time">
+            <h4>📅 Support Response Times</h4>
+            <p><strong>Email Support:</strong> Within 24 hours (usually much faster)</p>
+            <p><strong>Premium Users:</strong> Priority support with faster response times</p>
+        </div>
+
+        <!-- Additional Resources -->
+        <section class="section">
+            <h2>Additional Resources</h2>
+            <div class="support-grid">
+                <div class="support-card">
+                    <div class="emoji">🔒</div>
+                    <h3>Privacy Policy</h3>
+                    <p>Learn how we protect your privacy and data</p>
+                    <a href="privacy.html" class="support-button">Read Policy</a>
+                </div>
+                <div class="support-card">
+                    <div class="emoji">💡</div>
+                    <h3>Tips & Tricks</h3>
+                    <p>Get the most out of your AI meal planning</p>
+                    <a href="mailto:ddutchie@gmail.com?subject=Meal Planning Tips" class="support-button">Get Tips</a>
+                </div>
+                <div class="support-card">
+                    <div class="emoji">🌟</div>
+                    <h3>Feature Requests</h3>
+                    <p>Suggest new features for future updates</p>
+                    <a href="mailto:ddutchie@gmail.com?subject=Feature Request" class="support-button">Suggest Feature</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const isActive = element.classList.contains('active');
+            
+            // Close all FAQ items
+            document.querySelectorAll('.faq-question').forEach(q => {
+                q.classList.remove('active');
+                q.nextElementSibling.classList.remove('active');
+            });
+            
+            // If this wasn't active, open it
+            if (!isActive) {
+                element.classList.add('active');
+                answer.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
