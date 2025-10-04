@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Meal Prep - AI-powered meal planning, recipe discovery, and cooking assistant. Plan your week, manage your pantry, and cook with confidence.">
+    <meta name="keywords" content="meal planning, AI chef, recipe app, cooking assistant, pantry management">
+    <title>Meal Prep - AI Meal Planner | Your Personal Cooking Assistant</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* App Theme Colors */
+            --primary: #FF6B35;
+            --primary-light: #FFE5DB;
+            --gradient-start: #FF6B35;
+            --gradient-end: #F7931E;
+            --background: #FFF5F0;
+            --surface: #FFFFFF;
+            --text: #333333;
+            --text-secondary: #666666;
+            
+            /* Watercolor Palette */
+            --sage: #8B9F77;
+            --terracotta: #D2691E;
+            --coral: #FF7F50;
+            --charcoal: #36454F;
+            --stone: #918A81;
+            --cream: #FFF8DC;
+            
+            /* Status Colors */
+            --success: #4CAF50;
+            --error: #F44336;
+            --warning: #FF9800;
+            --info: #2196F3;
+            
+            /* Meal Type Colors */
+            --breakfast: #FFC107;
+            --lunch: #673AB7;
+            --dinner: #E91E63;
+            --snack: #4CAF50;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--background);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header/Nav */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 50%, var(--coral) 100%);
+            color: white;
+            padding: 6rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path fill="%23ffffff" fill-opacity="0.1" d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,58.7C960,64,1056,64,1152,58.7L1200,56L1200,120L1152,120C1104,120,1008,120,912,120C816,120,720,120,624,120C528,120,432,120,336,120C240,120,144,120,48,120L0,120Z"></path></svg>');
+            background-size: cover;
+            background-position: bottom;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: white;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background: var(--background);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--primary);
+        }
+
+        .feature-card:nth-child(2) { border-top-color: var(--coral); }
+        .feature-card:nth-child(3) { border-top-color: var(--sage); }
+        .feature-card:nth-child(4) { border-top-color: var(--breakfast); }
+        .feature-card:nth-child(5) { border-top-color: var(--lunch); }
+        .feature-card:nth-child(6) { border-top-color: var(--terracotta); }
+        .feature-card:nth-child(7) { border-top-color: var(--dinner); }
+        .feature-card:nth-child(8) { border-top-color: var(--snack); }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .premium-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        /* Premium Features */
+        .premium-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--charcoal) 0%, var(--stone) 50%, var(--sage) 100%);
+            color: white;
+        }
+
+        .premium-section .section-title,
+        .premium-section .section-subtitle {
+            color: white;
+        }
+
+        .premium-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .premium-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .premium-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .premium-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 5rem 0;
+            background: var(--cream);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        .step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--success), var(--sage));
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--success);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #95a5a6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .features-grid,
+            .premium-grid,
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">
+                🍳 Meal Prep
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#premium">Premium</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+            </ul>
+            <a href="#download" class="cta-button">Download App</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Your AI-Powered Meal Planning Companion</h1>
+            <p>Plan smarter, cook better, and eat healthier with personalized AI assistance</p>
+            <div class="hero-buttons">
+                <a href="#download" class="btn-primary">Get Started Free</a>
+                <a href="#features" class="btn-secondary">Explore Features</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Everything You Need to Master Your Kitchen</h2>
+            <p class="section-subtitle">From recipe discovery to meal planning, we've got you covered</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Recipe Discovery</h3>
+                    <p>Browse and discover thousands of delicious recipes from various cuisines. Search by ingredients, dietary needs, or cooking time.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">❤️</div>
+                    <h3>Save & Organize</h3>
+                    <p>Save your favorite recipes and build your personal digital cookbook. Scale recipes, add notes, and rate your cooking experiences.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍🍳</div>
+                    <h3>Cooking Mode</h3>
+                    <p>Step-by-step cooking guidance with automatic timers, temperature conversions, and measurement switching for a seamless cooking experience.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Weekly Meal Planner <span class="premium-badge">Premium</span></h3>
+                    <p>Plan your entire week with AI assistance. Get personalized meal suggestions, nutrition tracking, and automatic shopping list generation.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Meal Plan Analysis <span class="premium-badge">Premium</span></h3>
+                    <p>Get AI-powered insights on your meal plan including mise en place tips, cooking optimizations, time management strategies, and nutritional highlights.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📦</div>
+                    <h3>Smart Pantry <span class="premium-badge">Premium</span></h3>
+                    <p>Track your ingredients with barcode scanning, find recipes based on what you have, and never let food go to waste.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>AI Chef Assistant <span class="premium-badge">Premium</span></h3>
+                    <p>Chat with your personal AI chef for cooking advice, recipe generation, ingredient substitutions, and culinary techniques.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⏲️</div>
+                    <h3>Multiple Timers</h3>
+                    <p>Set multiple cooking timers with smart notifications. Never overcook or undercook your meals again.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Nutrition Info</h3>
+                    <p>View detailed nutritional information for every recipe including calories, macros, vitamins, and allergens to support your health goals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Features -->
+    <section id="premium" class="premium-section">
+        <div class="container">
+            <h2 class="section-title">Unlock Premium Features</h2>
+            <p class="section-subtitle">Take your cooking to the next level with advanced AI-powered tools</p>
+            
+            <div class="premium-grid">
+                <div class="premium-card">
+                    <h3>🤖 AI Recipe Generation</h3>
+                    <p>Create custom recipes based on your preferences, dietary restrictions, and available ingredients.</p>
+                </div>
+
+                <div class="premium-card">
+                    <h3>📊 Nutrition Tracking</h3>
+                    <p>Automatic calorie counting and nutritional goal tracking for your entire meal plan.</p>
+                </div>
+
+                <div class="premium-card">
+                    <h3>🛒 Smart Shopping Lists</h3>
+                    <p>Auto-generated shopping lists organized by store aisle for efficient grocery shopping.</p>
+                </div>
+
+                <div class="premium-card">
+                    <h3>📱 Barcode Scanner</h3>
+                    <p>Quickly add pantry items by scanning barcodes for effortless inventory management.</p>
+                </div>
+
+                <div class="premium-card">
+                    <h3>🎯 Recipe Matching</h3>
+                    <p>Find recipes that perfectly match your available pantry ingredients.</p>
+                </div>
+
+                <div class="premium-card">
+                    <h3>💡 Cooking Insights</h3>
+                    <p>Get meal plan analysis with mise en place tips, time management strategies, and cooking optimizations.</p>
+                </div>
+
+                <div class="premium-card">
+                    <h3>📥 Recipe Import</h3>
+                    <p>Import recipes from any website using AI-powered extraction.</p>
+                </div>
+
+                <div class="premium-card">
+                    <h3>♾️ Unlimited Saves</h3>
+                    <p>Save unlimited recipes to your collection (free users get 5 saved recipes).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Get started in minutes with our intuitive workflow</p>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Set Your Preferences</h3>
+                    <p>Tell us about your dietary restrictions, flavor preferences, and cooking skill level.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Discover & Plan</h3>
+                    <p>Browse recipes or let AI suggest personalized meal plans for your week.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Get Your List</h3>
+                    <p>Auto-generate shopping lists organized by aisle for efficient grocery trips.</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Cook with Confidence</h3>
+                    <p>Follow step-by-step guidance with automatic timers and measurement conversions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="download" class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Cooking?</h2>
+            <p>Join thousands of home cooks who are already meal prepping smarter</p>
+            <a href="#" class="btn-white">Download Now - It's Free!</a>
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">Available on iOS and Android</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Meal Prep</h3>
+                    <p>Your AI-powered meal planning companion for smarter cooking and healthier eating.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Features</h3>
+                    <ul>
+                        <li><a href="#features">Recipe Discovery</a></li>
+                        <li><a href="#features">Meal Planning</a></li>
+                        <li><a href="#features">AI Chef Assistant</a></li>
+                        <li><a href="#features">Pantry Management</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Meal Prep - AI Meal Planner. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
