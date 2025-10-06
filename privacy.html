@@ -15,14 +15,40 @@
             box-sizing: border-box;
         }
 
+        :root {
+            /* App Colors */
+            --terracotta: #FF6B35;
+            --terracotta-light: #FF9367;
+            --terracotta-dark: #F7931E;
+            --sage: #8B9F77;
+            --sage-light: #A8BF93;
+            --sage-dark: #6E7F5E;
+            --lavender: #9B6B9E;
+            --lavender-light: #B88ABB;
+            --ocean: #87B9DC;
+            --ocean-light: #AFD2EB;
+            --blush: #D791A0;
+            --blush-light: #E6B4C3;
+            --honey: #F0B450;
+            --honey-light: #FACD78;
+            
+            /* Base Colors */
+            --text-dark: #2E2E2E;
+            --text-light: #666666;
+            --background-light: #FAFAFA;
+            --background-white: #FFFFFF;
+            --border-light: #E0E0E0;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--text-dark);
+            background: var(--background-white);
         }
 
         .header {
-            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+            background: linear-gradient(135deg, var(--terracotta) 0%, var(--terracotta-dark) 100%);
             color: white;
             padding: 40px 20px;
             text-align: center;
@@ -31,10 +57,12 @@
         .header h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
+            color: white;
         }
 
         .header p {
             font-size: 1.1rem;
+            color: white;
             opacity: 0.9;
         }
 
@@ -47,7 +75,7 @@
         .back-link {
             display: inline-flex;
             align-items: center;
-            color: #FF6B35;
+            color: var(--terracotta);
             text-decoration: none;
             font-weight: 500;
             margin-bottom: 40px;
@@ -55,7 +83,7 @@
         }
 
         .back-link:hover {
-            color: #F7931E;
+            color: var(--terracotta-dark);
         }
 
         .back-link::before {
@@ -65,22 +93,22 @@
         }
 
         h2 {
-            color: #2c3e50;
+            color: var(--text-dark);
             font-size: 1.8rem;
             margin: 40px 0 20px 0;
-            border-bottom: 2px solid #e1e8ed;
+            border-bottom: 2px solid var(--border-light);
             padding-bottom: 10px;
         }
 
         h3 {
-            color: #34495e;
+            color: var(--text-dark);
             font-size: 1.3rem;
             margin: 30px 0 15px 0;
         }
 
         p {
             margin-bottom: 15px;
-            color: #555;
+            color: var(--text-light);
         }
 
         ul {
@@ -89,15 +117,15 @@
 
         li {
             margin-bottom: 8px;
-            color: #555;
+            color: var(--text-light);
         }
 
         strong {
-            color: #2c3e50;
+            color: var(--text-dark);
         }
 
         .summary-box {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: linear-gradient(135deg, var(--sage) 0%, var(--sage-dark) 100%);
             color: white;
             padding: 30px;
             border-radius: 15px;
@@ -122,39 +150,51 @@
         }
 
         .checkmark {
-            color: #4ade80;
+            color: var(--honey-light);
             font-weight: bold;
             margin-right: 10px;
             font-size: 1.1rem;
         }
 
         .contact-info {
-            background: #f8f9fa;
+            background: var(--background-light);
             padding: 25px;
             border-radius: 10px;
             margin: 30px 0;
+            border-left: 4px solid var(--sage);
         }
 
         .contact-info h3 {
             margin-top: 0;
+            color: var(--text-dark);
         }
 
         .effective-date {
-            background: #e3f2fd;
+            background: var(--background-light);
             padding: 15px;
             border-radius: 8px;
-            border-left: 4px solid #2196f3;
+            border-left: 4px solid var(--ocean);
             margin-bottom: 30px;
         }
 
         .footer-note {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
+            background: #FFF9E6;
+            border: 1px solid var(--honey-light);
             border-radius: 8px;
             padding: 20px;
             margin-top: 40px;
             font-style: italic;
-            color: #856404;
+            color: var(--text-light);
+        }
+
+        a {
+            color: var(--terracotta);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--terracotta-dark);
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
@@ -319,27 +359,27 @@
             <p>In plain language, here's what this means:</p>
             
             <div class="summary-item">
-                <span class="checkmark">✅</span>
+                <span class="checkmark">✓</span>
                 <div><strong>Ultimate Privacy</strong> - We collect zero personal data</div>
             </div>
             <div class="summary-item">
-                <span class="checkmark">✅</span>
+                <span class="checkmark">✓</span>
                 <div><strong>Anonymous AI processing</strong> - Only meal preferences sent to AI, no personal data</div>
             </div>
             <div class="summary-item">
-                <span class="checkmark">✅</span>
+                <span class="checkmark">✓</span>
                 <div><strong>No tracking</strong> - We don't know who you are or how you use the app</div>
             </div>
             <div class="summary-item">
-                <span class="checkmark">✅</span>
+                <span class="checkmark">✓</span>
                 <div><strong>No accounts needed</strong> - Use the app completely anonymously</div>
             </div>
             <div class="summary-item">
-                <span class="checkmark">✅</span>
+                <span class="checkmark">✓</span>
                 <div><strong>Complete control</strong> - Delete the app to remove everything</div>
             </div>
             <div class="summary-item">
-                <span class="checkmark">✅</span>
+                <span class="checkmark">✓</span>
                 <div><strong>Privacy by design</strong> - Built from the ground up to protect your privacy</div>
             </div>
             
