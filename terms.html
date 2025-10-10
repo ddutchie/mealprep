@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Meal Prep - AI Meal Planner</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* App Colors */
+            --terracotta: #FF6B35;
+            --terracotta-light: #FF9367;
+            --terracotta-dark: #F7931E;
+            --sage: #8B9F77;
+            --sage-light: #A8BF93;
+            --sage-dark: #6E7F5E;
+            --lavender: #9B6B9E;
+            --lavender-light: #B88ABB;
+            --ocean: #87B9DC;
+            --ocean-light: #AFD2EB;
+            --blush: #D791A0;
+            --blush-light: #E6B4C3;
+            --honey: #F0B450;
+            --honey-light: #FACD78;
+
+            /* Base Colors */
+            --text-dark: #2E2E2E;
+            --text-light: #666666;
+            --background-light: #FAFAFA;
+            --background-white: #FFFFFF;
+            --border-light: #E0E0E0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--background-white);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--terracotta) 0%, var(--terracotta-dark) 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: white;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--terracotta);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 40px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--terracotta-dark);
+        }
+
+        .back-link::before {
+            content: "←";
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        h2 {
+            color: var(--text-dark);
+            font-size: 1.8rem;
+            margin: 40px 0 20px 0;
+            border-bottom: 2px solid var(--border-light);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: var(--text-dark);
+            font-size: 1.3rem;
+            margin: 30px 0 15px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        ul {
+            margin: 15px 0 15px 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: var(--text-light);
+        }
+
+        strong {
+            color: var(--text-dark);
+        }
+
+        .warning-box {
+            background: #FFF3CD;
+            border: 1px solid var(--honey-light);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .warning-box .warning-icon {
+            color: var(--honey);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .disclaimer-box {
+            background: #F8D7DA;
+            border: 1px solid #F5C6CB;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .disclaimer-box .disclaimer-title {
+            color: #721C24;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .disclaimer-box p {
+            color: #721C24;
+        }
+
+        .info-box {
+            background: var(--background-light);
+            border-left: 4px solid var(--ocean);
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .contact-info {
+            background: var(--background-light);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border-left: 4px solid var(--sage);
+        }
+
+        .contact-info h3 {
+            margin-top: 0;
+            color: var(--text-dark);
+        }
+
+        .effective-date {
+            background: var(--background-light);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--ocean);
+            margin-bottom: 30px;
+        }
+
+        .footer-note {
+            background: #FFF9E6;
+            border: 1px solid var(--honey-light);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 40px;
+            font-style: italic;
+            color: var(--text-light);
+        }
+
+        a {
+            color: var(--terracotta);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--terracotta-dark);
+            text-decoration: underline;
+        }
+
+
+
+        /* Floating Feedback Button */
+        .feedback-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--terracotta), var(--terracotta-dark));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .feedback-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 107, 53, 0.5);
+            background: linear-gradient(135deg, var(--terracotta-dark), var(--terracotta));
+        }
+
+        .feedback-button::before {
+            content: "💡";
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 40px 15px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .feedback-button {
+                bottom: 15px;
+                right: 15px;
+                padding: 10px 16px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Terms of Service</h1>
+        <p>Legal terms governing your use of Meal Prep - AI Meal Planner</p>
+    </div>
+
+    <div class="container">
+        <a href="index.html" class="back-link">Back to Home</a>
+        <div style="margin-bottom: 20px;">
+            <a href="support.html" class="back-link" style="margin-left: 20px;">Support & Help</a>
+        </div>
+
+        <div class="effective-date">
+            <strong>Effective Date:</strong> 04 September 2025<br>
+            <strong>Last Updated:</strong> 04 September 2025
+        </div>
+
+        <h2>1. Acceptance of Terms</h2>
+        <p>By downloading, installing, accessing, or using the Meal Prep - AI Meal Planner mobile application ("App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, do not use the App.</p>
+        <p>These Terms constitute a legally binding agreement between you and the developer of Meal Prep - AI Meal Planner ("we," "our," or "us").</p>
+
+        <h2>2. Description of Service</h2>
+        <p>Meal Prep - AI Meal Planner is an AI-powered mobile application that provides personalized meal planning, recipe generation, cooking guidance, and pantry management services. The App uses artificial intelligence to generate customized recipes and meal plans based on your preferences, dietary needs, and available ingredients.</p>
+
+        <h3>Key Features Include:</h3>
+        <ul>
+            <li>AI-generated personalized recipes and meal plans</li>
+            <li>Recipe discovery with advanced filtering (cuisine, difficulty, cook time, dietary restrictions)</li>
+            <li>Cooking mode with step-by-step guidance and automatic timers</li>
+            <li>Smart shopping list management with pantry integration</li>
+            <li>AI Chef Assistant for cooking guidance and recipe recommendations</li>
+            <li>Recipe scaling, nutrition information, and rating system</li>
+            <li>Photo capture and recipe sharing capabilities</li>
+            <li>Barcode scanning for pantry management</li>
+            <li>Offline functionality and local data storage</li>
+        </ul>
+
+        <h2>3. Account Requirements and Eligibility</h2>
+        <ul>
+            <li>You must be at least 13 years old to use the App</li>
+            <li>Users under 18 must have parental consent</li>
+            <li>No account creation is required - the app works completely anonymously</li>
+            <li>You are responsible for maintaining the security of your device</li>
+            <li>You agree to notify us immediately of any unauthorized use of your device</li>
+        </ul>
+
+        <h2>4. Fair Usage Policy</h2>
+        <div class="info-box">
+            <div class="warning-icon">ℹ️</div>
+            <strong>Important:</strong> The App implements fair usage guidelines to ensure quality service for all users.
+        </div>
+
+        <h3>Usage Guidelines:</h3>
+        <ul>
+            <li>AI features are provided for personal, non-commercial use</li>
+            <li>Excessive automated requests may be limited to maintain service quality</li>
+            <li>Premium subscribers receive priority access to AI features</li>
+            <li>Usage limits help ensure fair access for all users</li>
+        </ul>
+
+        <h3>Prohibited Usage:</h3>
+        <ul>
+            <li>Using automated tools, scripts, or bots to access the App</li>
+            <li>Making excessive requests designed to overwhelm our systems</li>
+            <li>Commercial use of AI-generated content without proper licensing</li>
+            <li>Attempting to circumvent any usage limitations</li>
+            <li>Using the App for any illegal or harmful purposes</li>
+        </ul>
+
+        <h2>5. Medical and Nutritional Disclaimers</h2>
+        <div class="disclaimer-box">
+            <div class="disclaimer-title">IMPORTANT MEDICAL DISCLAIMER:</div>
+            <p>Meal Prep - AI Meal Planner is not a substitute for professional medical, nutritional, or dietary advice.</p>
+        </div>
+
+        <h3>Health and Safety:</h3>
+        <ul>
+            <li>Always consult with qualified healthcare professionals before making significant dietary changes</li>
+            <li>The App's recommendations are based on general nutritional guidelines and AI algorithms, not personalized medical advice</li>
+            <li>We do not guarantee the accuracy of nutritional information or health recommendations</li>
+            <li>Users with medical conditions, allergies, or dietary restrictions should verify all recommendations with healthcare providers</li>
+            <li>The App is not intended to diagnose, treat, cure, or prevent any disease</li>
+            <li>Pregnant or nursing women should consult healthcare providers before using meal plans</li>
+        </ul>
+
+        <h3>User Responsibility:</h3>
+        <ul>
+            <li>You are solely responsible for evaluating the suitability of meal plans and recipes</li>
+            <li>You assume all risks associated with following AI-generated meal plans</li>
+            <li>You must verify ingredient safety and check for allergens before consuming any recommended foods</li>
+            <li>Stop using the App and consult a healthcare provider if you experience any adverse effects</li>
+        </ul>
+
+        <h2>6. Intellectual Property Rights</h2>
+        <h3>Our Rights:</h3>
+        <ul>
+            <li>The App, including its design, code, algorithms, and AI models, is protected by intellectual property laws</li>
+            <li>All trademarks, service marks, and logos are owned by us or our licensors</li>
+            <li>You may not copy, modify, distribute, sell, or lease any part of the App</li>
+            <li>Reverse engineering, decompiling, or attempting to extract source code is prohibited</li>
+        </ul>
+
+        <h3>Your Content:</h3>
+        <ul>
+            <li>You retain ownership of photos, recipes, and other content you create or upload</li>
+            <li>By using the App, you grant us a license to process your content to provide services</li>
+            <li>You represent that you have the right to upload and share any content you submit</li>
+            <li>We may remove content that violates these Terms or applicable laws</li>
+        </ul>
+
+        <h2>7. Prohibited Conduct</h2>
+        <div class="warning-box">
+            <div class="warning-icon">⚠️</div>
+            <strong>Warning:</strong> Violation of these terms may result in restricted access to the App.
+        </div>
+
+        <h3>Prohibited Activities:</h3>
+        <ul>
+            <li><strong>Illegal Use:</strong> Using the App for any illegal purpose or in violation of local, state, national, or international laws</li>
+            <li><strong>Harmful Content:</strong> Uploading or sharing content that is offensive, harmful, threatening, abusive, or discriminatory</li>
+            <li><strong>System Abuse:</strong> Attempting to hack, disrupt, or damage the App's infrastructure or security</li>
+            <li><strong>Spam and Fraud:</strong> Engaging in fraudulent activities or spreading spam</li>
+            <li><strong>Commercial Misuse:</strong> Using the App for unauthorized commercial purposes</li>
+            <li><strong>Impersonation:</strong> Pretending to be another person or entity</li>
+            <li><strong>Intellectual Property Infringement:</strong> Uploading content that violates others' copyrights, trademarks, or patents</li>
+        </ul>
+
+        <h2>8. Subscription and Payment Terms</h2>
+        <ul>
+            <li>Premium subscriptions are processed through the Apple App Store or Google Play Store</li>
+            <li>Prices are subject to change with notice</li>
+            <li>Subscriptions automatically renew unless cancelled</li>
+            <li>Refunds are governed by respective app store policies</li>
+            <li>We do not store or process payment information directly</li>
+            <li>Premium features are only available to active subscribers</li>
+        </ul>
+
+        <h2>9. Privacy and Data Protection</h2>
+        <p>Your privacy is important to us. Our collection, use, and protection of your personal information is governed by our Privacy Policy, which is incorporated into these Terms by reference.</p>
+        <p><strong>Key Privacy Principles:</strong></p>
+        <ul>
+            <li>We do not collect, store, or process personal data</li>
+            <li>All data remains on your device</li>
+            <li>Anonymous meal preferences are sent to AI services only</li>
+            <li>No user accounts or personal information required</li>
+        </ul>
+        <p>Please review our <a href="privacy.html">Privacy Policy</a> for detailed information about data handling.</p>
+
+        <h2>10. Limitation of Liability</h2>
+        <div class="info-box">
+            <p><strong>IMPORTANT LEGAL NOTICE:</strong> This section limits our liability to the maximum extent permitted by law. Please read carefully.</p>
+        </div>
+
+        <h3>Disclaimer of Warranties:</h3>
+        <ul>
+            <li>The App is provided "as is" without warranties of any kind</li>
+            <li>We do not warrant that the App will be error-free or uninterrupted</li>
+            <li>We do not guarantee the accuracy of nutritional information or AI recommendations</li>
+            <li>We disclaim all warranties, express or implied, including merchantability and fitness for purpose</li>
+        </ul>
+
+        <h3>Limitation of Damages:</h3>
+        <ul>
+            <li>Our total liability shall not exceed the amount you paid for the App in the 12 months preceding the claim</li>
+            <li>We are not liable for indirect, incidental, special, or consequential damages</li>
+            <li>We are not responsible for damages arising from your use of meal plans or recipes</li>
+            <li>We are not liable for health issues, allergic reactions, or dietary complications</li>
+        </ul>
+
+        <h2>11. Indemnification</h2>
+        <p>You agree to indemnify, defend, and hold harmless the Meal Prep - AI Meal Planner service from and against any claims, damages, losses, costs, or expenses (including reasonable attorneys' fees) arising from:</p>
+        <ul>
+            <li>Your use or misuse of the App</li>
+            <li>Your violation of these Terms</li>
+            <li>Your violation of any rights of another party</li>
+            <li>Content you upload or share through the App</li>
+            <li>Any health issues arising from following meal plans or recipes</li>
+        </ul>
+
+        <h2>12. Governing Law and Dispute Resolution</h2>
+        <ul>
+            <li>These Terms are governed by the laws of Ontario, Canada</li>
+            <li>Any disputes shall be subject to the exclusive jurisdiction of Ontario courts</li>
+            <li>We encourage resolving disputes through direct communication first</li>
+            <li>If legal action becomes necessary, the prevailing party may recover reasonable attorneys' fees</li>
+        </ul>
+
+        <h2>13. Changes to Terms</h2>
+        <p>We reserve the right to modify these Terms at any time. When we make material changes, we will:</p>
+        <ul>
+            <li>Update the "Last Updated" date at the top of this page</li>
+            <li>Notify users through in-app notifications when possible</li>
+            <li>Include information about changes in App Store update notes</li>
+            <li>Provide at least 30 days' notice for material changes</li>
+        </ul>
+        <p>Your continued use of the App after changes take effect constitutes acceptance of the new Terms.</p>
+
+        <h2>14. Termination</h2>
+        <h3>Your Right to Terminate:</h3>
+        <ul>
+            <li>You may stop using the App at any time</li>
+            <li>You may delete the App from your device to remove all data</li>
+            <li>Premium subscriptions should be cancelled through your app store account</li>
+        </ul>
+
+        <h3>Our Right to Terminate:</h3>
+        <ul>
+            <li>We may discontinue the App with 60 days' notice</li>
+            <li>We may restrict access for violations of these Terms</li>
+            <li>Termination may be immediate for serious violations</li>
+        </ul>
+
+        <h3>Effect of Termination:</h3>
+        <ul>
+            <li>Your right to use the App immediately ceases</li>
+            <li>All data stored locally on your device will be removed when you delete the app</li>
+            <li>Sections of these Terms that should survive termination will remain in effect</li>
+        </ul>
+
+        <h2>15. Severability</h2>
+        <p>If any provision of these Terms is found to be unenforceable or invalid, the remaining provisions will remain in full force and effect. The unenforceable provision will be modified to the minimum extent necessary to make it enforceable.</p>
+
+        <h2>16. Entire Agreement</h2>
+        <p>These Terms, together with our Privacy Policy, constitute the entire agreement between you and Meal Prep - AI Meal Planner regarding the use of the App. These Terms supersede any prior agreements or understandings.</p>
+
+        <div class="contact-info">
+            <h3>Contact Information</h3>
+            <p>If you have questions about these Terms of Service, please contact us:</p>
+            <p><strong>Email:</strong> support@meal-prep.app<br>
+            <strong>Address:</strong> 705 King Street West, Toronto, M5V 2W8</p>
+            <p>For legal-related concerns, please include "Terms of Service" in the subject line.</p>
+        </div>
+
+        <div class="footer-note">
+            <p><em>This Terms of Service is designed to be compliant with major legal requirements and mobile app store guidelines. However, we recommend having it reviewed by a qualified attorney before implementation.</em></p>
+        </div>
+    </div>
+
+    <!-- Featurebase SDK - Commented out as it's a paid feature -->
+    <!--
+    <script>!(function(e,t){const a="featurebase-sdk";function n(){if(!t.getElementById(a)){var e=t.createElement("script");(e.id=a),(e.src="https://do.featurebase.app/js/sdk.js"),t.getElementsByTagName("script")[0].parentNode.insertBefore(e,t.getElementsByTagName("script")[0])}}"function"!=typeof e.Featurebase&&(e.Featurebase=function(){(e.Featurebase.q=e.Featurebase.q||[]).push(arguments)}),"complete"===t.readyState||"interactive"===t.readyState?n():t.addEventListener("DOMContentLoaded",n)})(window,document);</script>
+
+    <script>
+    Featurebase("initialize_feedback_widget", {
+      organization: "mealprep",
+      theme: "light",
+      placement: "right",
+      email: "support@meal-prep.app",
+      locale: "en",
+      metadata: null
+    });
+    </script>
+    -->
+
+    <!-- Floating Feedback Button -->
+    <a href="https://mealprep.featurebase.app" target="_blank" class="feedback-button" title="Share your feedback and feature requests">
+        Feedback & Ideas
+    </a>
+</body>
+</html>

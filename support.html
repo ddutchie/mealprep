@@ -333,21 +333,63 @@
             color: var(--text-light);
         }
 
+
+
+        /* Floating Feedback Button */
+        .feedback-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--terracotta), var(--terracotta-dark));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .feedback-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 107, 53, 0.5);
+            background: linear-gradient(135deg, var(--terracotta-dark), var(--terracotta));
+        }
+
+        .feedback-button::before {
+            content: "💡";
+            font-size: 1.1rem;
+        }
+
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2rem;
             }
-            
+
             .container {
                 padding: 40px 15px;
             }
-            
+
             .support-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .contact-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .feedback-button {
+                bottom: 15px;
+                right: 15px;
+                padding: 10px 16px;
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -515,7 +557,7 @@
                 <div class="contact-item">
                     <h3>Email Support</h3>
                     <p>For detailed questions and technical support</p>
-                    <p><a href="mailto:ddutchie@gmail.com">ddutchie@gmail.com</a></p>
+                    <p><a href="mailto:support@meal-prep.app">support@meal-prep.app</a></p>
                     <p>Include "Support Request" in the subject line</p>
                 </div>
                 <div class="contact-item">
@@ -545,12 +587,12 @@
                 <div class="support-card">
                     <h3>Tips & Tricks</h3>
                     <p>Get the most out of your AI meal planning</p>
-                    <a href="mailto:ddutchie@gmail.com?subject=Meal Planning Tips" class="support-button">Get Tips</a>
+                    <a href="mailto:support@meal-prep.app?subject=Meal Planning Tips" class="support-button">Get Tips</a>
                 </div>
                 <div class="support-card">
                     <h3>Feature Requests</h3>
                     <p>Suggest new features for future updates</p>
-                    <a href="mailto:ddutchie@gmail.com?subject=Feature Request" class="support-button">Suggest Feature</a>
+                    <a href="mailto:support@meal-prep.app?subject=Feature Request" class="support-button">Suggest Feature</a>
                 </div>
             </div>
         </section>
@@ -574,5 +616,26 @@
             }
         }
     </script>
+
+    <!-- Featurebase SDK - Commented out as it's a paid feature -->
+    <!--
+    <script>!(function(e,t){const a="featurebase-sdk";function n(){if(!t.getElementById(a)){var e=t.createElement("script");(e.id=a),(e.src="https://do.featurebase.app/js/sdk.js"),t.getElementsByTagName("script")[0].parentNode.insertBefore(e,t.getElementsByTagName("script")[0])}}"function"!=typeof e.Featurebase&&(e.Featurebase=function(){(e.Featurebase.q=e.Featurebase.q||[]).push(arguments)}),"complete"===t.readyState||"interactive"===t.readyState?n():t.addEventListener("DOMContentLoaded",n)})(window,document);</script>
+
+    <script>
+    Featurebase("initialize_feedback_widget", {
+      organization: "mealprep",
+      theme: "light",
+      placement: "right",
+      email: "support@meal-prep.app",
+      locale: "en",
+      metadata: null
+    });
+    </script>
+    -->
+
+    <!-- Floating Feedback Button -->
+    <a href="https://mealprep.featurebase.app" target="_blank" class="feedback-button" title="Share your feedback and feature requests">
+        Feedback & Ideas
+    </a>
 </body>
 </html>

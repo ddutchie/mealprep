@@ -247,6 +247,35 @@
             right: 10px;
         }
 
+        .mobile-slider-controls {
+            display: none;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .mobile-slider-btn {
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--text-dark);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s;
+        }
+
+        .mobile-slider-btn:hover {
+            background: white;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            transform: scale(1.1);
+        }
+
         .woman-image {
             width: 400px;
             height: 400px;
@@ -661,6 +690,8 @@
             color: #95a5a6;
         }
 
+
+
         /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
@@ -689,6 +720,14 @@
                 transform: scale(1);
             }
 
+            .slider-btn {
+                display: none;
+            }
+
+            .mobile-slider-controls {
+                display: flex;
+            }
+
             .woman-image {
                 width: 250px;
                 height: 250px;
@@ -713,6 +752,48 @@
             .steps,
             .features-showcase {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        /* Floating Feedback Button */
+        .feedback-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--terracotta), var(--terracotta-dark));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .feedback-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 107, 53, 0.5);
+            background: linear-gradient(135deg, var(--terracotta-dark), var(--terracotta));
+        }
+
+        .feedback-button::before {
+            content: "💡";
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .feedback-button {
+                bottom: 15px;
+                right: 15px;
+                padding: 10px 16px;
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -745,7 +826,7 @@
 
             <div class="app-preview">
                 <button class="slider-btn prev" onclick="navigate(-1)">‹</button>
-                <div class="app-preview-container" id="appPreview">
+                <div class="app-preview-container" id="appPreview" ontouchstart="handleTouchStart(event)" ontouchmove="handleTouchMove(event)" ontouchend="handleTouchEnd(event)">
                     <img id="leftImage" src="" alt="Previous" class="app-screen-side">
                     <div class="device-frame-container">
                         <img src="assets/images/Screenshots/17 Pro Max - Deep Blue.svg" alt="Device Frame" class="device-frame-svg">
@@ -754,76 +835,33 @@
                     <img id="rightImage" src="" alt="Next" class="app-screen-side">
                 </div>
                 <button class="slider-btn next" onclick="navigate(1)">›</button>
+                <div class="mobile-slider-controls">
+                    <button class="mobile-slider-btn prev" onclick="navigate(-1)">‹</button>
+                    <button class="mobile-slider-btn next" onclick="navigate(1)">›</button>
+                </div>
             </div>
 
             <script>
                 const screenshots = [
-                    // Recipe Selection
-                    "assets/images/Screenshots/Selecting a Recipe/IMG_3383.jpeg",
-                    "assets/images/Screenshots/Selecting a Recipe/IMG_3384.jpeg",
-                    "assets/images/Screenshots/Selecting a Recipe/IMG_3385.jpeg",
-                    "assets/images/Screenshots/Selecting a Recipe/IMG_3386.jpeg",
-                    "assets/images/Screenshots/Selecting a Recipe/IMG_3387.jpeg",
-                    "assets/images/Screenshots/Selecting a Recipe/IMG_3388.jpeg",
-                    "assets/images/Screenshots/Selecting a Recipe/IMG_3389.jpeg",
-                    "assets/images/Screenshots/Selecting a Recipe/IMG_3404.jpeg",
-                    // Meal Planner
-                    "assets/images/Screenshots/Meal Planner/IMG_3369.jpeg",
-                    "assets/images/Screenshots/Meal Planner/IMG_3370.jpeg",
-                    "assets/images/Screenshots/Meal Planner/IMG_3371.jpeg",
-                    "assets/images/Screenshots/Meal Planner/IMG_3372.jpeg",
-                    "assets/images/Screenshots/Meal Planner/IMG_3373.jpeg",
-                    "assets/images/Screenshots/Meal Planner/IMG_3374.jpeg",
-                    "assets/images/Screenshots/Meal Planner/IMG_3375.jpeg",
-                    "assets/images/Screenshots/Meal Planner/IMG_3376.jpeg",
-                    "assets/images/Screenshots/Meal Planner/IMG_3377.jpeg",
-                    "assets/images/Screenshots/Meal Planner/IMG_3378.jpeg",
-                    "assets/images/Screenshots/Meal Planner/IMG_3379.jpeg",
-                    "assets/images/Screenshots/Meal Planner/IMG_3380.jpeg",
-                    "assets/images/Screenshots/Meal Planner/IMG_3381.jpeg",
-                    "assets/images/Screenshots/Meal Planner/IMG_3382.jpeg",
-                    // AI Chef Chat
-                    "assets/images/Screenshots/Ai Chef Chat/IMG_3394.jpeg",
-                    "assets/images/Screenshots/Ai Chef Chat/IMG_3395.jpeg",
-                    "assets/images/Screenshots/Ai Chef Chat/IMG_3396.jpeg",
-                    "assets/images/Screenshots/Ai Chef Chat/IMG_3397.jpeg",
-                    "assets/images/Screenshots/Ai Chef Chat/IMG_3398.jpeg",
-                    "assets/images/Screenshots/Ai Chef Chat/IMG_3399.jpeg",
-                    "assets/images/Screenshots/Ai Chef Chat/IMG_3400.jpeg",
-                    "assets/images/Screenshots/Ai Chef Chat/IMG_3401.jpeg",
-                    "assets/images/Screenshots/Ai Chef Chat/IMG_3402.jpeg",
-                    "assets/images/Screenshots/Ai Chef Chat/IMG_3403.jpeg",
-                    // Pantry
-                    "assets/images/Screenshots/Pantry/IMG_3391.jpeg",
-                    "assets/images/Screenshots/Pantry/IMG_3392.jpeg",
-                    // Cooking
-                    "assets/images/Screenshots/Cooking a recipe start to FInish/IMG_3364.jpeg",
-                    "assets/images/Screenshots/Cooking a recipe start to FInish/IMG_3365.jpeg",
-                    "assets/images/Screenshots/Cooking a recipe start to FInish/IMG_3366.jpeg",
-                    "assets/images/Screenshots/Cooking a recipe start to FInish/IMG_3367.jpeg",
-                    // Recipe Photos
-                    "assets/images/Screenshots/Recipes_Photos/IMG_3368.jpeg",
-                    "assets/images/Screenshots/Recipes_Photos/IMG_3390.jpeg",
-                    "assets/images/Screenshots/Recipes_Photos/IMG_3393.jpeg",
-                    "assets/images/Screenshots/Recipes_Photos/IMG_3405.jpeg",
-                    "assets/images/Screenshots/Recipes_Photos/IMG_3415.jpeg",
-                    "assets/images/Screenshots/Recipes_Photos/IMG_3416.jpeg",
-                    "assets/images/Screenshots/Recipes_Photos/IMG_3417.jpeg",
-                    "assets/images/Screenshots/Recipes_Photos/IMG_3418.jpeg",
-                    "assets/images/Screenshots/Recipes_Photos/IMG_3419.jpeg",
-                    "assets/images/Screenshots/Recipes_Photos/IMG_3420.jpeg",
-                    // User Guide
-                    "assets/images/Screenshots/User Guide/IMG_3406.jpeg",
-                    "assets/images/Screenshots/User Guide/IMG_3407.jpeg",
-                    "assets/images/Screenshots/User Guide/IMG_3408.jpeg",
-                    "assets/images/Screenshots/User Guide/IMG_3409.jpeg",
-                    "assets/images/Screenshots/User Guide/IMG_3410.jpeg",
-                    "assets/images/Screenshots/User Guide/IMG_3411.jpeg",
-                    "assets/images/Screenshots/User Guide/IMG_3412.jpeg",
-                    "assets/images/Screenshots/User Guide/IMG_3413.jpeg"
+                    "assets/images/Screenshots/Final/01_1.jpg",
+                    "assets/images/Screenshots/Final/01_2.jpg",
+                    "assets/images/Screenshots/Final/01_3.jpg",
+                    "assets/images/Screenshots/Final/01_4.jpg",
+                    "assets/images/Screenshots/Final/01_5.jpg",
+                    "assets/images/Screenshots/Final/02.jpg",
+                    "assets/images/Screenshots/Final/03.jpg",
+                    "assets/images/Screenshots/Final/03_1.jpg",
+                    "assets/images/Screenshots/Final/04.jpg",
+                    "assets/images/Screenshots/Final/04_1.jpg",
+                    "assets/images/Screenshots/Final/04_2.jpg",
+                    "assets/images/Screenshots/Final/05.jpg",
+                    "assets/images/Screenshots/Final/06.jpg",
+                    "assets/images/Screenshots/Final/07.jpg"
                 ];
 
                 let currentIndex = 0;
+                let startX = 0;
+                let endX = 0;
 
                 function updateImages() {
                     const leftIndex = (currentIndex - 1 + screenshots.length) % screenshots.length;
@@ -837,6 +875,35 @@
                 function navigate(direction) {
                     currentIndex = (currentIndex + direction + screenshots.length) % screenshots.length;
                     updateImages();
+                }
+
+                function handleTouchStart(event) {
+                    startX = event.touches[0].clientX;
+                }
+
+                function handleTouchMove(event) {
+                    if (!startX) return;
+                    endX = event.touches[0].clientX;
+                }
+
+                function handleTouchEnd(event) {
+                    if (!startX || !endX) return;
+
+                    const diffX = startX - endX;
+                    const minSwipeDistance = 50;
+
+                    if (Math.abs(diffX) > minSwipeDistance) {
+                        if (diffX > 0) {
+                            // Swipe left - next image
+                            navigate(1);
+                        } else {
+                            // Swipe right - previous image
+                            navigate(-1);
+                        }
+                    }
+
+                    startX = 0;
+                    endX = 0;
                 }
 
                 // Initialize
@@ -902,7 +969,7 @@
                 <div class="feature-showcase">
                     <div class="feature-badge">Save 2+ hours</div>
                     <h3>Shopping lists that save time</h3>
-                    <p>Auto-generated, organized by store layout, with local pricing. No more wandering aisles like a lost soul.</p>
+                    <p>Auto-generated, organized by store layout. No more wandering aisles like a lost soul.</p>
                 </div>
 
                 <div class="feature-showcase">
@@ -1070,7 +1137,9 @@
         <div class="container">
             <h2>Ready to Transform Your Cooking?</h2>
             <p>Join thousands of home cooks who are already meal prepping smarter</p>
-            <a href="#" class="btn-white">Download Now - It's Free!</a>
+            <a href="https://apps.apple.com/app/meal-prep-ai-meal-planner/id6752038937" style="display: inline-block;">
+                <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1737504000" alt="Download on the App Store" style="width: 246px; height: 82px; vertical-align: middle; object-fit: contain;" />
+            </a>
             <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">Available on iOS (Android coming soon)</p>
         </div>
     </section>
@@ -1100,7 +1169,7 @@
                         <li><a href="support.html">Help Center</a></li>
                         <li><a href="support.html">Contact Us</a></li>
                         <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
                     </ul>
                 </div>
 
@@ -1120,5 +1189,26 @@
             </div>
         </div>
     </footer>
+
+    <!-- Featurebase SDK - Commented out as it's a paid feature -->
+    <!--
+    <script>!(function(e,t){const a="featurebase-sdk";function n(){if(!t.getElementById(a)){var e=t.createElement("script");(e.id=a),(e.src="https://do.featurebase.app/js/sdk.js"),t.getElementsByTagName("script")[0].parentNode.insertBefore(e,t.getElementsByTagName("script")[0])}}"function"!=typeof e.Featurebase&&(e.Featurebase=function(){(e.Featurebase.q=e.Featurebase.q||[]).push(arguments)}),"complete"===t.readyState||"interactive"===t.readyState?n():t.addEventListener("DOMContentLoaded",n)})(window,document);</script>
+
+    <script>
+    Featurebase("initialize_feedback_widget", {
+      organization: "mealprep",
+      theme: "light",
+      placement: "right",
+      email: "support@meal-prep.app",
+      locale: "en",
+      metadata: null
+    });
+    </script>
+    -->
+
+    <!-- Floating Feedback Button -->
+    <a href="https://mealprep.featurebase.app" target="_blank" class="feedback-button" title="Share your feedback and feature requests">
+        Feedback & Ideas
+    </a>
 </body>
 </html>
