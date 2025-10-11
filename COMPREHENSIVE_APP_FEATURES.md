@@ -134,6 +134,38 @@ This document provides a complete analysis of all features in the AI Chef meal p
 
 **Missing from Onboarding/Guide:** ✅ Contextual responses, profile building, chat persistence
 
+### 8. Behavioral Recipe Learning System
+**Location:** `components/settings/BehavioralInsightsSection.tsx`, `utils/recipe-behavior-analyzer.ts`
+
+**Features:**
+- **Automatic Preference Learning**: Analyzes cooking behavior to learn user preferences
+- **Smart Recipe Analysis**: Processes ratings, "would make again" flags, and cooking history
+- **Cuisine Preference Detection**: Identifies favorite cuisines from highly-rated recipes
+- **Protein & Ingredient Learning**: Learns preferred proteins and ingredients from cooking patterns
+- **Dislike Detection**: Identifies ingredients to avoid from low-rated recipes
+- **Confidence Scoring**: Provides reliability metrics for learned preferences (High/Medium/Low)
+- **Behavioral Profile Integration**: Automatically updates AI prompts with learned preferences
+- **Manual Controls**: Users can view, edit, reset, or re-analyze learned preferences
+- **Privacy Controls**: Settings toggle to enable/disable behavioral learning
+- **Progressive Learning**: Analyzes at milestones (5, 10, 20, 50+ recipes) for better accuracy
+- **Visual Insights Dashboard**: Shows learned preferences with recipe counts and confidence levels
+- **Advanced Ingredient Parsing**: Uses sophisticated ingredient normalization to extract meaningful preferences
+- **Smart Filtering**: Automatically excludes basic staples (salt, pepper, water) and fragments (2 cloves, salt plus)
+- **Quality Controls**: Ensures only meaningful ingredients appear in learned preferences
+- **Fragment Detection**: Filters out parsing artifacts and preparation methods without ingredients
+
+**Key Benefits:**
+- Reduces upfront profile questions from 12 to 6 essential questions
+- Learns preferences automatically as users cook and rate recipes
+- Provides more accurate recommendations based on actual behavior vs stated preferences
+- Builds comprehensive taste profile without user effort
+- Respects manual preferences (doesn't override explicit user choices)
+- **Enhanced Accuracy**: Advanced ingredient parsing ensures only meaningful preferences are learned
+- **Cleaner Insights**: Filters out basic staples and parsing fragments for better user experience
+- **Quality Assurance**: Minimum quality controls prevent meaningless data from polluting preferences
+
+**Missing from Onboarding/Guide:** ✅ All behavioral learning features
+
 ## Advanced Features
 
 ### 8. Recipe Intelligence
@@ -226,12 +258,13 @@ This document provides a complete analysis of all features in the AI Chef meal p
 ## Feature Gaps Analysis
 
 ### High Priority Missing Features:
-1. **Meal Plan Smart Shopping Lists** - Auto-syncing This Week & Next Week lists with pantry matching (NEW!)
-2. **Recipe Import/Export** - Users need to know they can import recipes from websites
-3. **Advanced Filtering** - The sophisticated filtering system isn't explained
-4. **Recipe Rating & Notes** - Personal recipe management features
-5. **Photo Capture** - Users can take photos of their cooking results
-6. **Recipe Sharing** - Social features for sharing recipes
+1. **Behavioral Recipe Learning System** - Automatic preference learning from cooking behavior (NEW!)
+2. **Meal Plan Smart Shopping Lists** - Auto-syncing This Week & Next Week lists with pantry matching
+3. **Recipe Import/Export** - Users need to know they can import recipes from websites
+4. **Advanced Filtering** - The sophisticated filtering system isn't explained
+5. **Recipe Rating & Notes** - Personal recipe management features
+6. **Photo Capture** - Users can take photos of their cooking results
+7. **Recipe Sharing** - Social features for sharing recipes
 
 ### Medium Priority Missing Features:
 7. **Barcode Scanning** - Premium feature for pantry management
@@ -250,22 +283,34 @@ This document provides a complete analysis of all features in the AI Chef meal p
 ## Recommendations for Updates
 
 ### OnboardingFlow.tsx Updates:
-1. **Add step for meal plan smart shopping lists** - Auto-syncing, pantry matching, and smart overrides (PRIORITY)
-2. Add step for recipe import/export
-3. Add step for advanced filtering
-4. Add step for recipe rating and notes
-5. Add step for photo capture in cooking mode
-6. Add step for recipe sharing
+1. **Add step for behavioral recipe learning** - Automatic preference learning from cooking behavior (PRIORITY)
+2. **Add step for meal plan smart shopping lists** - Auto-syncing, pantry matching, and smart overrides
+3. Add step for recipe import/export
+4. Add step for advanced filtering
+5. Add step for recipe rating and notes
+6. Add step for photo capture in cooking mode
+7. Add step for recipe sharing
 
 ### UserGuide.tsx Updates:
-1. **Add section for meal plan smart shopping lists** - This Week/Next Week auto-sync, pantry matching, confidence levels (PRIORITY)
-2. Add section for recipe management (rating, notes, organization)
-3. Add section for cooking features (timers, photos, sharing)
-4. Expand shopping list section with triple view modes
-5. Add section for pantry management (barcode scanning, smart matching)
-6. Add section for nutrition and scaling tools
+1. **Add section for behavioral recipe learning** - Automatic preference learning, confidence scoring, manual controls (PRIORITY)
+2. **Add section for meal plan smart shopping lists** - This Week/Next Week auto-sync, pantry matching, confidence levels
+3. Add section for recipe management (rating, notes, organization)
+4. Add section for cooking features (timers, photos, sharing)
+5. Expand shopping list section with triple view modes
+6. Add section for pantry management (barcode scanning, smart matching)
+7. Add section for nutrition and scaling tools
 
 ### Feature Highlights:
+
+The **Behavioral Recipe Learning System** is a revolutionary feature that transforms how users interact with the app:
+- **Zero-Effort Personalization**: Learns preferences automatically as users cook and rate recipes
+- **Reduced Onboarding**: Cuts profile questions from 12 to 6 essential questions
+- **Behavior-Based Accuracy**: Uses actual cooking behavior instead of stated preferences
+- **Progressive Intelligence**: Gets smarter with every recipe (5, 10, 20, 50+ milestones)
+- **Confidence Transparency**: Shows reliability scores so users know when to trust insights
+- **Privacy Control**: Users can view, edit, reset, or disable learning anytime
+- **AI Integration**: Automatically enhances recipe recommendations with learned preferences
+
 The **Meal Plan Smart Shopping Lists** feature is a game-changer for users:
 - Eliminates manual shopping list management
 - Keeps pantry and shopping lists in perfect sync
