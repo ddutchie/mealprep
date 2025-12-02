@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Meal Prep - AI-powered meal planning, recipe discovery, and cooking assistant. Plan your week, manage your pantry, and cook with confidence.">
+    <meta name="description"
+        content="Meal Prep - AI-powered meal planning, recipe discovery, and cooking assistant. Plan your week, manage your pantry, and cook with confidence.">
     <meta name="keywords" content="meal planning, AI chef, recipe app, cooking assistant, pantry management">
-    <title>Meal Prep - AI Meal Planner | Your Personal Cooking Assistant</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
-    <link rel="manifest" href="site.webmanifest">
+    <title>PantrySage | Your Personal Cooking Assistant</title>
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
     <style>
         * {
             margin: 0;
@@ -34,7 +36,7 @@
             --blush-light: #E6B4C3;
             --honey: #F0B450;
             --honey-light: #FACD78;
-            
+
             /* Base Colors */
             --text-dark: #2E2E2E;
             --text-light: #666666;
@@ -432,11 +434,25 @@
             border-left: 4px solid var(--sage);
         }
 
-        .feature-showcase:nth-child(2) { border-left-color: var(--terracotta); }
-        .feature-showcase:nth-child(3) { border-left-color: var(--ocean); }
-        .feature-showcase:nth-child(4) { border-left-color: var(--lavender); }
-        .feature-showcase:nth-child(5) { border-left-color: var(--blush); }
-        .feature-showcase:nth-child(6) { border-left-color: var(--honey); }
+        .feature-showcase:nth-child(2) {
+            border-left-color: var(--terracotta);
+        }
+
+        .feature-showcase:nth-child(3) {
+            border-left-color: var(--ocean);
+        }
+
+        .feature-showcase:nth-child(4) {
+            border-left-color: var(--lavender);
+        }
+
+        .feature-showcase:nth-child(5) {
+            border-left-color: var(--blush);
+        }
+
+        .feature-showcase:nth-child(6) {
+            border-left-color: var(--honey);
+        }
 
         .feature-showcase:hover {
             transform: translateY(-5px);
@@ -502,14 +518,37 @@
             border-top: 4px solid var(--sage);
         }
 
-        .feature-card:nth-child(2) { border-top-color: var(--terracotta); }
-        .feature-card:nth-child(3) { border-top-color: var(--ocean); }
-        .feature-card:nth-child(4) { border-top-color: var(--lavender); }
-        .feature-card:nth-child(5) { border-top-color: var(--blush); }
-        .feature-card:nth-child(6) { border-top-color: var(--honey); }
-        .feature-card:nth-child(7) { border-top-color: var(--sage-light); }
-        .feature-card:nth-child(8) { border-top-color: var(--ocean-light); }
-        .feature-card:nth-child(9) { border-top-color: var(--blush-light); }
+        .feature-card:nth-child(2) {
+            border-top-color: var(--terracotta);
+        }
+
+        .feature-card:nth-child(3) {
+            border-top-color: var(--ocean);
+        }
+
+        .feature-card:nth-child(4) {
+            border-top-color: var(--lavender);
+        }
+
+        .feature-card:nth-child(5) {
+            border-top-color: var(--blush);
+        }
+
+        .feature-card:nth-child(6) {
+            border-top-color: var(--honey);
+        }
+
+        .feature-card:nth-child(7) {
+            border-top-color: var(--sage-light);
+        }
+
+        .feature-card:nth-child(8) {
+            border-top-color: var(--ocean-light);
+        }
+
+        .feature-card:nth-child(9) {
+            border-top-color: var(--blush-light);
+        }
 
         .feature-card:hover {
             transform: translateY(-10px);
@@ -798,6 +837,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav>
@@ -826,10 +866,12 @@
 
             <div class="app-preview">
                 <button class="slider-btn prev" onclick="navigate(-1)">‹</button>
-                <div class="app-preview-container" id="appPreview" ontouchstart="handleTouchStart(event)" ontouchmove="handleTouchMove(event)" ontouchend="handleTouchEnd(event)">
+                <div class="app-preview-container" id="appPreview" ontouchstart="handleTouchStart(event)"
+                    ontouchmove="handleTouchMove(event)" ontouchend="handleTouchEnd(event)">
                     <img id="leftImage" src="" alt="Previous" class="app-screen-side">
                     <div class="device-frame-container">
-                        <img src="assets/images/Screenshots/17 Pro Max - Deep Blue.svg" alt="Device Frame" class="device-frame-svg">
+                        <img src="assets/images/Screenshots/17 Pro Max - Deep Blue.svg" alt="Device Frame"
+                            class="device-frame-svg">
                         <img id="centerImage" src="" alt="Current" class="app-screen-center">
                     </div>
                     <img id="rightImage" src="" alt="Next" class="app-screen-side">
@@ -912,7 +954,8 @@
 
 
             <div class="hero-description">
-                <p>Finally, an app that gets your food vibes. AI-powered meal planning that actually knows what you like, creates shopping lists that don't suck, and makes cooking feel like less of a chore.</p>
+                <p>Finally, an app that gets your food vibes. AI-powered meal planning that actually knows what you
+                    like, creates shopping lists that don't suck, and makes cooking feel like less of a chore.</p>
             </div>
 
             <div class="app-stats">
@@ -936,7 +979,8 @@
                     <p>Get the app on iOS and Android</p>
                 </div>
                 <div class="qr-code">
-                    <img src="assets/images/meal-prep-qrcode.png" alt="Download QR Code" style="width: 100%; height: 100%; object-fit: contain;">
+                    <img src="assets/images/meal-prep-qrcode.png" alt="Download QR Code"
+                        style="width: 100%; height: 100%; object-fit: contain;">
                 </div>
             </div>
         </div>
@@ -948,44 +992,51 @@
             <div class="busy-humans-title">
                 <div class="subtitle">The Good Stuff</div>
                 <h2>We built this for busy humans like you</h2>
-                <p>Real features that solve real problems. No fluff, no BS - just stuff that actually makes cooking easier (and way less stressful).</p>
+                <p>Real features that solve real problems. No fluff, no BS - just stuff that actually makes cooking
+                    easier (and way less stressful).</p>
             </div>
 
             <div class="features-showcase">
                 <div class="feature-showcase">
                     <div class="feature-badge">Smart learning</div>
                     <h3>Behavioral recipe learning</h3>
-                    <p>Our AI learns your preferences automatically as you cook and rate recipes. Gets smarter with every dish you make - no manual preferences needed.</p>
+                    <p>Our AI learns your preferences automatically as you cook and rate recipes. Gets smarter with
+                        every dish you make - no manual preferences needed.</p>
                 </div>
 
                 <div class="feature-showcase">
                     <div class="feature-badge">5-min setup</div>
                     <h3>Meal planning without the drama</h3>
-                    <p>Drag, drop, done. Plan your week in minutes instead of hours. Even includes prep timelines for us chronic procrastinators.</p>
+                    <p>Drag, drop, done. Plan your week in minutes instead of hours. Even includes prep timelines for us
+                        chronic procrastinators.</p>
                 </div>
 
                 <div class="feature-showcase">
                     <div class="feature-badge">Smart shopping</div>
                     <h3>Auto-syncing shopping lists</h3>
-                    <p>This Week & Next Week lists automatically update with your meal plans. Shows what's already in your pantry so you don't buy duplicates.</p>
+                    <p>This Week & Next Week lists automatically update with your meal plans. Shows what's already in
+                        your pantry so you don't buy duplicates.</p>
                 </div>
 
                 <div class="feature-showcase">
                     <div class="feature-badge">Photo capture</div>
                     <h3>Cooking mode that celebrates you</h3>
-                    <p>Step-by-step guidance with multiple automatic timers, photo capture, landscape mode, and confetti when you're done. Cooking never felt this good.</p>
+                    <p>Step-by-step guidance with multiple automatic timers, photo capture, landscape mode, and confetti
+                        when you're done. Cooking never felt this good.</p>
                 </div>
 
                 <div class="feature-showcase">
                     <div class="feature-badge">40+ cuisines</div>
                     <h3>Recipe discovery that matches you</h3>
-                    <p>Advanced filtering by cuisine, difficulty, cook time, meal type, and dietary restrictions. Import recipes from any website for instant personalization.</p>
+                    <p>Advanced filtering by cuisine, difficulty, cook time, meal type, and dietary restrictions. Import
+                        recipes from any website for instant personalization.</p>
                 </div>
 
                 <div class="feature-showcase">
                     <div class="feature-badge">24/7 support</div>
                     <h3>Your 24/7 kitchen assistant</h3>
-                    <p>Contextual quick responses, recipe generation from ingredients, and flavor profile building. Ask anything about cooking techniques or ingredients.</p>
+                    <p>Contextual quick responses, recipe generation from ingredients, and flavor profile building. Ask
+                        anything about cooking techniques or ingredients.</p>
                 </div>
             </div>
         </div>
@@ -996,51 +1047,60 @@
         <div class="container">
             <h2 class="section-title">Everything You Need to Master Your Kitchen</h2>
             <p class="section-subtitle">From recipe discovery to meal planning, we've got you covered</p>
-            
+
             <div class="features-grid">
                 <div class="feature-card">
                     <h3>Recipe Discovery</h3>
-                    <p>Browse and discover thousands of delicious recipes from various cuisines. Search by ingredients, dietary needs, or cooking time with advanced filtering.</p>
+                    <p>Browse and discover thousands of delicious recipes from various cuisines. Search by ingredients,
+                        dietary needs, or cooking time with advanced filtering.</p>
                 </div>
 
                 <div class="feature-card">
                     <h3>Cooking Mode</h3>
-                    <p>Step-by-step guidance with automatic timers, photo capture, landscape mode support, multiple concurrent timers, completion celebration with confetti.</p>
+                    <p>Step-by-step guidance with automatic timers, photo capture, landscape mode support, multiple
+                        concurrent timers, completion celebration with confetti.</p>
                 </div>
 
                 <div class="feature-card">
                     <h3>Multiple Timers</h3>
-                    <p>Set multiple cooking timers with smart notifications. Never overcook or undercook your meals again with automatic timer detection.</p>
+                    <p>Set multiple cooking timers with smart notifications. Never overcook or undercook your meals
+                        again with automatic timer detection.</p>
                 </div>
 
                 <div class="feature-card">
                     <h3>Nutrition Info</h3>
-                    <p>View detailed nutritional information for every recipe including calories, macros, vitamins, and allergens to support your health goals.</p>
+                    <p>View detailed nutritional information for every recipe including calories, macros, vitamins, and
+                        allergens to support your health goals.</p>
                 </div>
 
                 <div class="feature-card">
                     <h3>Behavioral Recipe Learning <span class="premium-badge">Premium</span></h3>
-                    <p>AI automatically learns your preferences from cooking behavior - ratings, "would make again" flags, and recipe history. Gets smarter with every dish.</p>
+                    <p>AI automatically learns your preferences from cooking behavior - ratings, "would make again"
+                        flags, and recipe history. Gets smarter with every dish.</p>
                 </div>
 
                 <div class="feature-card">
                     <h3>Weekly Meal Planner <span class="premium-badge">Premium</span></h3>
-                    <p>Plan your entire week with AI assistance. Get personalized meal suggestions, nutrition tracking, and automatic shopping list generation.</p>
+                    <p>Plan your entire week with AI assistance. Get personalized meal suggestions, nutrition tracking,
+                        and automatic shopping list generation.</p>
                 </div>
 
                 <div class="feature-card">
                     <h3>Smart Shopping Lists <span class="premium-badge">Premium</span></h3>
-                    <p>This Week and Next Week lists auto-sync with meal plans. Shows pantry matches with confidence levels and organizes by grocery aisle.</p>
+                    <p>This Week and Next Week lists auto-sync with meal plans. Shows pantry matches with confidence
+                        levels and organizes by grocery aisle.</p>
                 </div>
 
                 <div class="feature-card">
                     <h3>Smart Pantry <span class="premium-badge">Premium</span></h3>
-                    <p>Track ingredients with barcode scanning, quick add, auto-categorization, and smart ingredient matching with confidence levels for substitutions.</p>
+                    <p>Track ingredients with barcode scanning, quick add, auto-categorization, and smart ingredient
+                        matching with confidence levels for substitutions.</p>
                 </div>
 
                 <div class="feature-card">
                     <h3>AI Chef Assistant <span class="premium-badge">Premium</span></h3>
-                    <p>Contextual responses, recipe generation from available ingredients, flavor profile building, cooking tutorials, and ingredient substitution guidance.</p>
+                    <p>Contextual responses, recipe generation from available ingredients, flavor profile building,
+                        cooking tutorials, and ingredient substitution guidance.</p>
                 </div>
             </div>
         </div>
@@ -1051,11 +1111,12 @@
         <div class="container">
             <h2 class="section-title">Unlock Premium Features</h2>
             <p class="section-subtitle">Take your cooking to the next level with advanced AI-powered tools</p>
-            
+
             <div class="premium-grid">
                 <div class="premium-card">
                     <h3>AI Recipe Generation</h3>
-                    <p>Create custom recipes based on your preferences, dietary restrictions, and available ingredients.</p>
+                    <p>Create custom recipes based on your preferences, dietary restrictions, and available ingredients.
+                    </p>
                 </div>
 
                 <div class="premium-card">
@@ -1065,7 +1126,8 @@
 
                 <div class="premium-card">
                     <h3>Smart Shopping Lists</h3>
-                    <p>Auto-generated shopping lists organized by store aisle with smart pantry matching for efficient grocery shopping.</p>
+                    <p>Auto-generated shopping lists organized by store aisle with smart pantry matching for efficient
+                        grocery shopping.</p>
                 </div>
 
                 <div class="premium-card">
@@ -1080,12 +1142,14 @@
 
                 <div class="premium-card">
                     <h3>Cooking Insights</h3>
-                    <p>Get meal plan analysis with mise en place tips, time management strategies, and cooking optimizations.</p>
+                    <p>Get meal plan analysis with mise en place tips, time management strategies, and cooking
+                        optimizations.</p>
                 </div>
 
                 <div class="premium-card">
                     <h3>Behavioral Insights</h3>
-                    <p>Get detailed insights on your cooking patterns and preferences. View automatic preference learning, recipe ratings, and behavior-based recommendations.</p>
+                    <p>Get detailed insights on your cooking patterns and preferences. View automatic preference
+                        learning, recipe ratings, and behavior-based recommendations.</p>
                 </div>
 
                 <div class="premium-card">
@@ -1101,7 +1165,7 @@
         <div class="container">
             <h2 class="section-title">How It Works</h2>
             <p class="section-subtitle">Get started in minutes with our intuitive workflow</p>
-            
+
             <div class="steps">
                 <div class="step">
                     <div class="step-number">1</div>
@@ -1132,15 +1196,20 @@
 
 
 
-    
+
     <!-- CTA Section -->
     <section id="download" class="cta-section">
         <div class="container">
             <h2>Ready to Transform Your Cooking?</h2>
             <p>Join thousands of home cooks who are already meal prepping smarter</p>
-            <a href="https://apps.apple.com/us/app/meal-prep-ai-meal-planner/id6752038937?itscg=30200&itsct=apps_box_badge&mttnsubad=6752038937" style="display: inline-block;">
-                <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1760140800" alt="Download on the App Store" style="width: 246px; height: 82px; vertical-align: middle; object-fit: contain;" />
+
+            <a href="https://apps.apple.com/us/app/pantrysage/id6752038937?itscg=30200&itsct=apps_box_badge&mttnsubad=6752038937"
+                style="display: inline-block;">
+                <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1760140800"
+                    alt="Download on the App Store"
+                    style="width: 246px; height: 82px; vertical-align: middle; object-fit: contain;" />
             </a>
+
             <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">Available on iOS (Android coming soon)</p>
         </div>
     </section>
@@ -1186,7 +1255,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 Meal Prep - AI Meal Planner. All rights reserved.</p>
+                <p>&copy; 2025 PantrySage. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -1200,7 +1269,7 @@
       organization: "mealprep",
       theme: "light",
       placement: "right",
-      email: "support@meal-prep.app",
+      email: "support@pantrysage.app",
       locale: "en",
       metadata: null
     });
@@ -1208,8 +1277,10 @@
     -->
 
     <!-- Floating Feedback Button -->
-    <a href="https://mealprep.featurebase.app" target="_blank" class="feedback-button" title="Share your feedback and feature requests">
+    <a href="https://mealprep.featurebase.app" target="_blank" class="feedback-button"
+        title="Share your feedback and feature requests">
         Feedback & Ideas
     </a>
 </body>
+
 </html>

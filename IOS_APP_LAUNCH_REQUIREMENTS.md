@@ -1,9 +1,9 @@
 # Meal Prep iOS Launch Requirements
 
-This document consolidates the metadata, assets, and compliance items needed to submit **Meal Prep - AI Meal Planner** to App Store Connect.
+This document consolidates the metadata, assets, and compliance items needed to submit **PantrySage** to App Store Connect.
 
 ## App Store Connect Metadata
-- **App Name (<=30 chars)**: Meal Prep - AI Meal Planner
+- **App Name (<=30 chars)**: PantrySage
 - **Bundle Display Name**: Meal Prep
 - **Subtitle (<=30 chars)**: Plan. Shop. Cook smarter.
 - **Promotional Text (<=170 chars)**: Let the AI Chef plan your week, build smart shopping lists, and guide every recipe while keeping all of your data safely on device.
@@ -37,7 +37,7 @@ This document consolidates the metadata, assets, and compliance items needed to 
 - **Privacy Policy URL**: https://mealprep.ai/privacy (points to `privacy.html`)
 - **Copyright**: (c) 2025 Meal Prep
 - **Trade Representative Contact (if required)**: 705 King Street West, Toronto, ON M5V 2W8, Canada
-- **Company Contact Email**: ddutchie@gmail.com
+- **Company Contact Email**: hello@pantrysage.app
 - **Languages**: English (US and Canada). Add localized metadata later if available.
 
 ## App Privacy (Data Not Collected)
@@ -82,7 +82,7 @@ Export 6.5" (1242x2688) portrait screenshots (and 6.7" if desired). Apply the fo
 - **Third-Party SDKs**: None beyond Apple frameworks (state in review notes).
 - **Encryption**: Uses standard Apple encryption only; answer "No" to export compliance question.
 - **Test Notes for Reviewer**: Provide instructions to access premium features (for example, note paywall flow or supply TestFlight promo code).
-- **Contact for Review**: ddutchie@gmail.com
+- **Contact for Review**: hello@pantrysage.app
 
 ## Pre-Submission QA
 - [ ] Build signed with release distribution certificate and provisioning profile.
